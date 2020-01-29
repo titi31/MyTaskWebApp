@@ -9,8 +9,9 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { Routes,RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
+//import { Observable } from "rxjs/Observable";
 import { AuthenticationService } from "./services/authentication.service"
-
+//import { JwtHelper } from 'angular2-jwt';
 const appRoutes:Routes=[
       {path:'login',component:LoginComponent},
       {path:'tasks',component:TasksComponent},
@@ -31,7 +32,9 @@ const appRoutes:Routes=[
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+   // Observable
+    
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]
