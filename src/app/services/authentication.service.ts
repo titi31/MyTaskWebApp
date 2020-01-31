@@ -7,7 +7,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class AuthenticationService {
   private host:string="https://tasktimo.herokuapp.com";
-  private jwtToken=null;
+ jwtToken=null;
   private roles:Array<any>;
   //headers = new HttpHeaders({'Access-Control-Allow-Origin' : '*'})
   constructor(private http: HttpClient) {
@@ -24,6 +24,7 @@ export class AuthenticationService {
        localStorage.setItem("token",jwt);
       let jwtHelper= new JwtHelper();
        this.roles=jwtHelper.decodeToken(this.jwtToken).roles;
+       console.log(jwtHelper.decodeToken(jwt));
       }
       loadToken(){
         this.jwtToken=localStorage.getItem('token');
@@ -48,5 +49,8 @@ export class AuthenticationService {
       //let headers=new HttpHeaders();
       //headers.append('authorization',this.jwtToken);
       return this.http.post(this.host+"/tasks",task,{headers:new HttpHeaders({'authorization':this.jwtToken})});
+    }
+    saveUser(user){
+      return this.http.post(this.host+"/register",user);
     }
 }

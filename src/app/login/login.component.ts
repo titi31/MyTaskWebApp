@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   mode:number=0;
+  user;
   constructor(private authService:AuthenticationService, private router:Router) { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
         console.log(resp.headers)
         let jwt=resp.headers.get('authorization');
         console.log("--------------"+jwt);
+        this.user=user;
         this.authService.saveToken(jwt);
         //console.log(resp.headers.get("Authorization"))
         this.router.navigateByUrl('/tasks');
@@ -30,6 +32,9 @@ export class LoginComponent implements OnInit {
     console.log(err.error)
         this.mode=1;
     });
+  }
+  onRegister(){
+    this.router.navigateByUrl('/register');
   }
 
 }

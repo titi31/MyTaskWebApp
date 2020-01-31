@@ -1,1 +1,25 @@
-<p>registration works!</p>
+<div class="container" *ngIf="mode==0">
+    <form  #f="ngForm" (ngSubmit)="onSaveUser(f.value)" >
+        <div class="form-group">
+        <label class="control-label">username</label>
+        <input class="form-control" type="text" name="username" ngModel="" required>
+        <label class="control-label">password</label>
+        <input class="form-control" type="password" name="password" ngModel="" required>
+        <label class="control-label">confirm password</label>
+        <input class="form-control" type="password" name="repassword" ngModel="" required>
+        </div>
+        <button class="btn btn-danger" type="submit" [disabled]="!f.valid">Save</button>
+    </form>
+</div>
+    <div *ngIf="mode==1" class="container" >
+        <table class="table table-striped">
+            <tr><th>username</th><th>id</th><th>role</th></tr>
+            <tr>
+                <td>{{username}}</td>
+                <td>{{roleid}}</td>
+                <td>{{roleName}}</td>
+            </tr>
+        </table>
+        <button (click)="onSuiv()">suiv</button>
+    
+</div>

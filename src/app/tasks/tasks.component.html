@@ -1,5 +1,6 @@
 <div class="container">
     <p></p>
+    <p *ngIf="user">Bonjour {{user}}</p>
     <button class="btn btn-danger" (click)="onNewTask()" *ngIf="authService.isAdmin()">New Task</button>
     <table class="table table-striped">
         <tr>
